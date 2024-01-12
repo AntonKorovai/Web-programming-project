@@ -1,0 +1,435 @@
+body {
+    margin: 0px;
+    background-color: rgb(255, 255, 255);
+}
+
+header {
+    background-color: rgb(247, 247, 247);
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+main {
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: 100%;
+}
+
+footer {
+    background-color: rgb(247, 247, 247);
+    min-height: 150px;
+    padding: 10%;
+    padding-top: 50px;
+}
+
+.Main_Star {
+    margin-bottom: 0px;
+}
+
+
+.access {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.accessWrapper {
+    float: right;
+    width: 160px;
+}
+
+button {
+
+    height: 40px;
+    font-family: 'Inter', sans-serif;
+    background-color: transparent;
+    border: none;
+}
+
+button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+.objectivesContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.objectivesContainer div {
+    width: 300px;
+}
+
+.characteristicsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: rgba(50, 50, 50, 0.7);
+
+}
+
+
+
+.link2MainDiv {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.link2MainDiv a {
+    font-family: 'Rubik Doodle Shadow', system-ui;
+    font-size: 30px;
+    color: black;
+}
+
+.dynamicAdminDashboard {
+    display: none;
+}
+
+.HNavigationMenuButton {
+    padding-left: 5px;
+    margin-right: 20px;
+}
+
+
+.presentation {
+    background-color: rgb(247, 247, 247);
+}
+
+.objectives {
+    background-color: rgb(255, 255, 255);
+}
+
+.characteristics {
+    background-color: rgb(247, 247, 247);
+}
+
+.characteristicsContainer {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.ourView {
+    background-color: black;
+    color: white;
+}
+
+.lastBooks {
+    background-color: rgb(247, 247, 247);
+    color: black;
+    align-items: start;
+}
+
+.JoinUs {
+    background-color: rgb(247, 247, 247);
+}
+
+.JoinUsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: -webkit-fill-available;
+    border-radius: 20px;
+    background-color: white;
+}
+
+h1 {
+    /*margin-top: 5px;*/
+    font-family: 'Cardo', serif;
+}
+
+.flexIsOn {
+    padding: 10%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alignTextCenter {
+    text-align: center;
+}
+
+img {
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+p,
+h3,
+h4,
+h5 {
+    margin-bottom: 0px;
+    font-family: 'Inter', sans-serif;
+}
+
+h2 {
+    font-family: 'Inter', sans-serif;
+}
+
+h4 {
+    font-weight: bold;
+}
+
+.accessButton {
+    margin-right: 25px;
+    padding: 0px;
+}
+
+#dybamicAccessForm {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    z-index: 2;
+    animation-duration: 0.3s;
+    animation-name: slideAccessForm;
+}
+
+#accessForm {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: -50%;
+    top: -30%;
+    background-color: rgb(244, 244, 244);
+    width: 300px;
+    height: 190px;
+    border-radius: 20px;
+}
+
+#accessForm label {
+    margin: 8px;
+}
+
+#accessForm input {
+    margin: 8px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 5px;
+    border: 1px black solid;
+}
+
+#focuseActive {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(63, 63, 63, 0.7);
+    animation-name: backgroundFocus;
+    animation-duration: 0.3s;
+
+}
+
+#bodyFocuseActive {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+
+@keyframes backgroundFocus {
+    0% {
+        background-color: rgba(63, 63, 63, 0);
+    }
+
+    25% {
+        background-color: rgba(63, 63, 63, 0.2);
+
+    }
+
+    50% {
+        background-color: rgba(63, 63, 63, 0.4);
+    }
+
+    75% {
+        background-color: rgba(63, 63, 63, 0.5);
+    }
+
+    100% {
+        background-color: rgba(63, 63, 63, 0.7);
+    }
+
+
+
+}
+
+@keyframes slideAccessForm {
+    0% {
+        top: 0%;
+    }
+
+    25% {
+        top: 7%;
+    }
+
+    50% {
+        top: 15%;
+    }
+
+    75% {
+        top: 23%;
+    }
+
+    100% {
+        top: 30%;
+    }
+}
+
+.webSiteReview {
+    width: 600px;
+}
+
+.socialWrapper a {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 10px 0px 0px 0px;
+}
+
+.aboutWrapper a {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px 0px 0px;
+}
+
+.socialWrapper a {
+    margin: 10px 0px 0px 0px;
+}
+
+.footerWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.dashboardWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    min-height: 500px;
+}
+
+.stats {
+    border: 1px black solid;
+    margin-left: 50px;
+    margin-bottom: 0px;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(247, 247, 247);
+}
+
+.dashboardWrapper h3 {
+    text-align: center;
+}
+
+.dashboardWrapper label {
+    text-align: center;
+}
+
+.statsNo {
+    text-align: center;
+}
+
+.deleteBook {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+    border: 1px black solid;
+}
+
+.deleteUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding-right: 200px;
+    border: 0;
+    border-bottom: 1px solid black;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+th {
+    font-size: 25px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.lastBooks h1 {
+    margin-bottom: 25px;
+}
+
+
+#loggedUser {
+    margin: 0px;
+}
+
+.logoutForm {
+    display: flex;
+    margin-right: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout {
+    margin: 0px;
+}
+
+.AllBooksPage_MainWrapper {
+    padding: 10%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.MyBooksPage_MainWrapper {
+    padding: 10%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
