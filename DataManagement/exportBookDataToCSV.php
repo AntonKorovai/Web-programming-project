@@ -4,7 +4,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "BookShop";
-$table = $_POST['Table']; // Replace with your actual table name
+$table = 'Book'; // Replace with your actual table name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -16,17 +16,17 @@ if ($conn->connect_error) {
 
 // Output CSV headers
 header('Content-Type: text/csv');
-header('Content-Disposition: attachment; filename="exported_data.csv"');
+header('Content-Disposition: attachment; filename="exported_book_data.csv"');
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
 
 
 // Open output stream
-$output = fopen('exported_data.csv', 'w');
+$output = fopen('exported_book_data.csv', 'w');
 
 // Fetch data from the database
-$result = $conn->query("SELECT * FROM $table");
+$result = $conn->query("SELECT * FROM Book");
 
 // Output CSV column headers
 $fields = mysqli_fetch_fields($result);

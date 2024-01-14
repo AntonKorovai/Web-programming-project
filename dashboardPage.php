@@ -82,6 +82,7 @@ session_start();
 
         </div>
         <div id="chartDiv" style="width:50%;height:300px;margin:0 auto;"></div>
+        <div id="chartDivBook" style="width:50%;height:300px;margin:0 auto;"></div>
     </main>
     <footer>
         <div class="footerWrapper">

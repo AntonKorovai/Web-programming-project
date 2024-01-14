@@ -1,18 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     var Table = 'User';
+    var BookTable = 'Book';
 
     // Send data to the server using AJAX
     $.ajax({
         type: 'POST',
-        url: 'exportDataToCSV.php',
+        url: 'http://localhost/bookrepo/DataManagement/exportDataToCSV.php',
         data: { Table: Table },
         success: function (response) {
-            console.log('CSV Downloaded');
+            console.log('CSV Downloaded', response);
         }
     });
 
-    fetch('./exported_data.csv')
+    fetch('./DataManagement/exported_data.csv')
         .then(response => response.text())
         .then(function (text) {
             const newData = addBracketsToLastColumn(text);
@@ -24,6 +25,32 @@ document.addEventListener("DOMContentLoaded", () => {
             //Something went wrong
             console.log(error);
         });
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost/bookrepo/DataManagement/exportBookDataToCSV.php',
+        data: { BookTable: BookTable },
+        success: function (response) {
+            console.log('CSV Downloaded', response);
+        }
+    });
+
+    fetch('./DataManagement/exported_book_data.csv')
+        .then(response => response.text())
+        .then(function (text) {
+            const newData = addBracketsToLastColumn(text);
+            console.log(newData);
+            let series = csvBookToSeries(newData);
+            renderBookChart(series);
+        })
+        .catch(function (error) {
+            //Something went wrong
+            console.log(error);
+        });
+
+
+
+
     function addBracketsToLastColumn(csvText) {
         const lines = csvText.split('\n');
         // Process header separately
@@ -39,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function csvToSeries(text) {
-        const lifeExp = 'average_life_expectancy';
+        //const lifeExp = 'average_life_expectancy';
         let dataAsJson = JSC.csv2Json(text);
         console.log(dataAsJson);
         let male = [];
@@ -52,7 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const formattedDate = parsedDate.format('D/M/YYYY');
 
                 dateCounts[formattedDate] = (dateCounts[formattedDate] || 0) + 1;
-            } else {
+            }
+            else {
                 console.error('Error: Row does not contain a "RegDate" property.');
             }
         });
@@ -64,6 +92,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return [
             { name: 'Users', points: male },
+        ];
+    }
+    function csvBookToSeries(text) {
+        //const lifeExp = 'average_life_expectancy';
+        let dataAsJson = JSC.csv2Json(text);
+        console.log(dataAsJson);
+        let male = [];
+        const dateCounts = {};
+        dataAsJson.forEach(function (row) {
+            // Ensure 'RegDate' property exists in the row object
+            if (row.AddDate) {
+                // Using moment.js to parse and format the date
+                const parsedDate = moment(row.AddDate, 'DD/MM/YYYY');
+                const formattedDate = parsedDate.format('D/M/YYYY');
+
+                dateCounts[formattedDate] = (dateCounts[formattedDate] || 0) + 1;
+            }
+            else {
+                console.error('Error: Row does not contain a "RegDate" property.');
+            }
+        });
+        for (const date in dateCounts) {
+            if (dateCounts.hasOwnProperty(date)) {
+                console.log(`Date: ${date}, Count: ${dateCounts[date]}`);
+                male.push({ x: date, y: dateCounts[date] });
+            }
+        }
+        return [
+            { name: 'Books', points: male },
         ];
     }
 
@@ -79,7 +136,22 @@ document.addEventListener("DOMContentLoaded", () => {
             legend_visible: false,
             xAxis_crosshair_enabled: true,
             defaultSeries_lastPoint_label_text: '<b>%seriesName</b>',
-            defaultPoint_tooltip: '%seriesName <b>%yValue</b> years',
+            defaultPoint_tooltip: '%seriesName <b>%yValue</b> Users',
+            series: series
+        });
+    }
+
+    function renderBookChart(series) {
+        JSC.Chart('chartDivBook', {
+            title_label_text: 'No. of Books Added',
+            annotations: [{
+                label_text: 'Source: BookShop database',
+                position: 'bottom left'
+            }],
+            legend_visible: false,
+            xAxis_crosshair_enabled: true,
+            defaultSeries_lastPoint_label_text: '<b>%seriesName</b>',
+            defaultPoint_tooltip: '%seriesName <b>%yValue</b> Books',
             series: series
         });
     }
