@@ -27,7 +27,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-    <script src="scrript.js"></script>
+    <script src="JS/scrript.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
@@ -52,7 +52,7 @@ session_start();
     <main class="main">
         <div class="AllBooksPage_MainWrapper">
             <h2>Books</h2>
-            <?php include 'getAllBooks.php'; ?>
+            <?php include 'BookManagement/getAllBooks.php'; ?>
             <script>
                 function addToDatabase(button) {
                     // Get the row data
@@ -63,7 +63,7 @@ session_start();
                     // Send data to the server using AJAX
                     $.ajax({
                         type: 'POST',
-                        url: 'addBookToMyLibrary.php',
+                        url: 'LibraryManagement/addBookToMyLibrary.php',
                         data: { Author: Author, Title: Title },
                         success: function (response) {
                             alert(response);

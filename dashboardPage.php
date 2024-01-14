@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookRepo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -27,9 +27,9 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-    <script src="scrript.js"></script>
+    <script src="JS/scrript.js"></script>
     <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
-    <script src="charts.js"></script>
+    <script src="JS/charts.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -58,13 +58,13 @@ session_start();
         <div class="dashboardWrapper">
             <div class="NoRegisteredUsers stats">
                 <h3>Users Registered</h3>
-                <?php include 'getNoUsers.php'; ?>
+                <?php include 'DashboardManagement/getNoUsers.php'; ?>
             </div>
             <div class="NoBooks stats">
                 <h3>Books Available</h3>
-                <?php include 'getNoBooks.php'; ?>
+                <?php include 'DashboardManagement/getNoBooks.php'; ?>
             </div>
-            <form action="deleteBook.php" method="post" class="deleteBook stats">
+            <form action="DashboardManagement/deleteBook.php" method="post" class="deleteBook stats">
                 <h3>deleteBook</h3>
                 <label for="book_id">Book ID:</label>
                 <input type="text" id="book_id" name="book_id" required>
@@ -72,7 +72,7 @@ session_start();
                 <button type="submit">Delete</button>
             </form>
 
-            <form action="deleteUser.php" method="post" class="deleteUser stats">
+            <form action="DashboardManagement/deleteUser.php" method="post" class="deleteUser stats">
                 <h3>deleteUser</h3>
                 <label for="user_id">User ID:</label>
                 <input type="text" id="user_id" name="user_id" required>

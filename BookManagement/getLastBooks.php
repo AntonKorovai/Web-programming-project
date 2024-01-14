@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to retrieve the 5 latest entries from the database table
-$sql = "SELECT * FROM Book  Order By 'BookID' DESC LIMIT 5";
+$sql = "SELECT * FROM Book  Order By BookID DESC LIMIT 5";
 $result = $conn->query($sql);
 
 // Check if there are results

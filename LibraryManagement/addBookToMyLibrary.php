@@ -1,19 +1,15 @@
 <?php
+// Start the session
 session_start();
+
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "BookShop";
 
-
-if (isset($_SESSION["username"])) {
-    $Sessionusername = $_SESSION['username'];
-} else {
-    echo "<p class = \" HtagMyBookPage\">Login or register to get your books.</p>";
-    exit();
-}
-
+// Assuming you have the username stored in the session
+$SessionUsername = $_SESSION['username'];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -22,8 +18,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$title = $_POST['title'];
-$author = $_POST['author'];
+
+// Retrieve book details from the form submission
+$title = $_POST['Title'];
+$author = $_POST['Author'];
 
 $usernameToSearch = $_SESSION['username'];
 
@@ -39,22 +37,24 @@ if ($userResult->num_rows > 0) {
     if ($bookResult->num_rows > 0) {
         $row = $bookResult->fetch_assoc();
         $bookID = $row['BookID'];
-        $libraryDelete = "DELETE FROM Library WHERE BookID = '$bookID' AND UserID = $userID";
-        if ($conn->query($libraryDelete) === TRUE) {
-            $message = "Book deleted successfully!";
-            echo "<script>window.location.href = 'myBooksPage.php';
+        $libraryInsert = "INSERT INTO Library (UserID, BookID) VALUES ('$userID', '$bookID')";
+        if ($conn->query($libraryInsert) === TRUE) {
+            $message = "Book added successfully!";
+            echo "<script>window.location.href = '../myBooksPage.php';
                     alert('$message');</script>";
             exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $libraryInsert . "<br>" . $conn->error;
         }
-    } else {
-        echo "<p>No books found.</p>";
-    }
 
+    } else {
+        echo "Error: " . $bookQuery . "<br>" . $conn->error;
+    }
 } else {
     echo "<p>UserNotFound.</p>";
 }
 
+
+// Close the database connection
 $conn->close();
 ?>

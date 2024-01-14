@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookRepo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -26,7 +26,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-    <script src="scrript.js"></script>
+    <script src="JS/scrript.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
@@ -55,7 +55,7 @@ session_start();
                 <br>functionality to redefine
                 classic libraries.
             </p>
-            <img class="libraryImg" src="../BookRepo/library2.jpg" alt="" width="1000" height="600">
+            <img class="libraryImg" src="../BookRepo/images/library2.jpg" alt="" width="1000" height="600">
         </div>
 
         <div class="objectives flexIsOn" id="objectives">
@@ -149,7 +149,7 @@ session_start();
 
         <div class="lastBooks flexIsOn" style="align-items: start;">
             <h1>Read, Enjoy, Share</h1>
-            <?php include 'getLastBooks.php'; ?>
+            <?php include 'BookManagement/getLastBooks.php'; ?>
             <script>
                 function addToDatabase(button) {
                     console.log(button);
@@ -161,7 +161,7 @@ session_start();
                     // Send data to the server using AJAX
                     $.ajax({
                         type: 'POST',
-                        url: 'addBookToMyLibrary.php',
+                        url: 'LibraryManagement/addBookToMyLibrary.php',
                         data: { Author: Author, Title: Title },
                         success: function (response) {
                             alert(response);

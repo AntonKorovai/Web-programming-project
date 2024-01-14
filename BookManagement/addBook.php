@@ -54,7 +54,7 @@ if ($userResult->num_rows > 0) {
             $libraryInsert = "INSERT INTO Library (UserID, BookID) VALUES ('$userID', '$bookID')";
             if ($conn->query($libraryInsert) === TRUE) {
                 $message = "Book added successfully!";
-                echo "<script>window.location.href = 'myBooksPage.php';
+                echo "<script>window.location.href = '../myBooksPage.php';
                     alert('$message');</script>";
                 exit();
             } else {

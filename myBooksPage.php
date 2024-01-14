@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookRepo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -27,7 +27,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-    <script src="scrript.js"></script>
+    <script src="JS/scrript.js"></script>
 </head>
 
 <body>
@@ -51,11 +51,11 @@ session_start();
     <main class="main">
         <div class="MyBooksPage_MainWrapper">
             <h2 class="HtagMyBookPage">Your Books</h2>
-            <?php include 'getBooks.php'; ?>
+            <?php include 'BookManagement/getBooks.php'; ?>
             <?php if (isset($_SESSION['username'])) {
                 echo "<div class=\"add-book-form\">
                     <h3>Add a Book</h3>
-                    <form action=\"addBook.php\" method=\"post\">
+                    <form action=\"BookManagement/addBook.php\" method=\"post\">
                         <label for=\"title\">Title:</label>
                         <input type=\"text\" id=\"title\" name=\"title\" required>
         
@@ -67,7 +67,7 @@ session_start();
                 </div>
                 <div class=\"delete-book-form\">
                     <h3>Delete a Book</h3>
-                    <form action=\"deleteBookFromLibrary.php\" method=\"post\">
+                    <form action=\"LibraryManagement/deleteBookFromLibrary.php\" method=\"post\">
                         <label for=\"title\">Title:</label>
                         <input type=\"text\" id=\"title\" name=\"title\" required>
         
