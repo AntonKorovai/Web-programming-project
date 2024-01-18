@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Execute the query
     if ($conn->query($sql) === TRUE) {
         $message = "The book was deleted successfully!";
-        echo "<script>window.location.href = 'dashBoardPage.php';
+        echo "<script>window.location.href = '../dashBoardPage.php';
         alert('$message');</script>";
     } else {
         echo "Error deleting book: " . $conn->error;
